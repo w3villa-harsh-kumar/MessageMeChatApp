@@ -1,12 +1,14 @@
+<%= render "shared/errors", data: @user %>
+
 <div class="ui middle aligned center aligned grid custom-center">
   <div class="custom-column column">
     <div class="ui segment">
       <h2 class="ui center aligned icon blue header">
         <i class="circular power off icon"></i>
-        Login to MessageMe Chat App
+        Sign up to MessageMe Chat App
       </h2>
       <div class="ui center aligned basic segment">
-        <%= form_for(:session, url: login_path, class: "my-form ui form", local:true) do |f| %>
+        <%= form_for(@user, url: signup_path, class: "my-form ui form", local: true) do |f| %>
           <div class="field">
             <div class="ui left input">
               <%= f.text_field :username, class: "my-input", placeholder: "Username" %>
@@ -17,13 +19,13 @@
               <%= f.password_field :password, class: "my-input", placeholder: "Password" %>
             </div>
           </div>
-          <%= f.submit "Log in", class: "ui primary fluid button" %>
+          <%= f.submit "Sign Up", class: "ui primary fluid button" %>
           <%# <div class="ui divider"></div>
           <a href="#">Forgot password?</a> %>
         </div>
       </div>
       <div class="ui segment">
-        New here? <a href="/signup">Sign Up</a>
+        Already have an account?, <a href="/login">Login</a>
       </div>
     <% end %>
   </div>

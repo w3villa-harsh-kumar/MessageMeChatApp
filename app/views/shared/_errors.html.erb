@@ -1,0 +1,21 @@
+<%# flash messages %>
+
+<%# <%
+    debugger
+  %> 
+<% if data.errors.any? %>
+    <div class="ui container">
+        <div class="ui error message">
+            <i class="close icon"></i>
+            <div class="header">
+                <%= pluralize(data.errors.count, "error") %> prohibited
+                this <%= data.class.name.downcase %> from being saved:
+            </div>
+            <ul class="list">
+                <% data.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+<% end %>

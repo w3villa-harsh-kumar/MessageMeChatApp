@@ -16,6 +16,17 @@
 //= require semantic-ui
 //= require_tree .
 
+let scroll_bottom = function () {
+  if ($("#msg-container-parent").length > 0) {
+    // Smooth scroll
+    $("#msg-container-parent").animate({ scrollTop: $("#msg-container-parent")[0].scrollHeight }, 700);
+  }
+}
+
 $(document).on("turbolinks:load", function () {
-  $(".ui.dropdown").dropdown(); 
+  $(".ui.dropdown").dropdown();
+  $(".message .close").on("click", function () {
+    $(this).closest(".message").transition("fade");
+  });
+  scroll_bottom(); 
 });

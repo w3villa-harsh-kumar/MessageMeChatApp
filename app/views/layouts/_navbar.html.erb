@@ -5,7 +5,7 @@
     </a>
     <a href="#" class="item"><i class="home icon"></i>Home</a>
     <a href="/" class="item"><i class="chat icon"></i> Chatroom</a>
-    <div class="ui dropdown item">
+    <%# <div class="ui simple dropdown item">
       Dropdown <i class="dropdown icon"></i>
       <div class="menu">
         <a class="item" href="#">Link Item</a>
@@ -22,14 +22,23 @@
         </div>
         <a class="item" href="#">Link Item</a>
       </div>
-    </div>
+    </div> %>
     <div class="right menu">
-      <div class="item">
+      <% if logged_in? %>
+        <div class="item">
+          <a class="ui basic blue button" href="#"><i class="user icon"></i> <%= current_user.username %></a>
+        </div>
+        <div class="item">
+        <%= button_to "Log out", logout_path, method: :delete, class: "ui basic teal button" %>
+        </div>
+      <% else %>
+        <div class="item">
           <a class="ui basic teal button" href="/login"><i class="sign in icon"></i>Log in</a>
         </div>
         <div class="item">
-          <a class="ui basic blue button" href="#"><i class="add user icon"></i>Sign up</a>
+          <a class="ui basic blue button" href="/signup"><i class="add user icon"></i>Sign up</a>
         </div>
+      <% end %>
     </div>
   </div>
 </div>
